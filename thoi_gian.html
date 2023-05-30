@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .national-holiday {
+      background-color: red;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .not-national-holiday {
+      background-color: green;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    let today = new Date();
+    let day = today.getDate();
+    let month = today.getMonth();
+
+    if (month === 1 && day === 13) {
+      document.write("<div class='national-holiday'>Hôm nay là quốc khánh Việt Nam!</div>");
+    } else {
+      document.write("<div class='not-national-holiday'>Hôm nay không phải là quốc khánh Việt Nam</div>");
+    }
+  </script>
+</body>
+</html>
