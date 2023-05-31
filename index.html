@@ -10,10 +10,10 @@
 <body>
     <div id ="main" class="header">
         <div class="button-container">
-            <button onclick="playMusic()">Music</button>
+            <button id="musicButton">Music</button>
           </div>
         <div  class="button-container tat">
-            <button onclick="pauseMusic()">Pause</button>
+            <button id="pauseButton">Pause</button>
           </div>
     </div>
     <div  class="day_len"  id ="tiet_khi_1">
@@ -881,11 +881,15 @@
 
     </div>
     <div class="video">
-        <video controls>
+        <video id="videoPlayer" controls>
             <source src="./assets/video/【4K】_72 Seasons_ of Makoto Shinkai  新海誠 「二十四節気 · 七十二候」.mp4" type="video/mp4">
             Trình duyệt của bạn không hỗ trợ thẻ video.
           </video>
           
+    </div>
+    <div>
+
+        <audio id="audioPlayer" src="./assets/video/videoplayback.m4a"></audio>
     </div>
     <div class="footer"></div>
     
@@ -893,26 +897,29 @@
       <script>
        
      
-      function playMusic() {
+        var audioPlayer = document.getElementById("audioPlayer");
+        var musicButton = document.getElementById("musicButton");
+        var pauseButton = document.getElementById("pauseButton");
 
-        if (confirm("Bạn có muốn phát nhạc không?")) {
-          // Phát bản nhạc nào đó
-          var audio = new Audio('./assets/video/videoplayback.m4a');
-          audio.play();
-        } else {
-          // Không phát nhạc
-          var audio = document.getElementsByTagName("audio")[0];
-          if (audio) {
-            audio.pause();
-          }
+        musicButton.addEventListener("click", function() {
+        audioPlayer.pause();
+        var confirmation = confirm("Do you want to play the music?");
+        if (confirmation) {
+            audioPlayer.play();
+            videoPlayer.pause();
         }
-        var myVideo = document.getElementsByClassName("video");
+        });
 
-        video.onclick = function() {
-        audio.pause();
+        pauseButton.addEventListener("click", function() {
+        audioPlayer.pause();
+        });
+
+        var videoPlayer = document.getElementById("videoPlayer");
+        videoPlayer.addEventListener("click", function() {
+        if (videoPlayer.play) {
+            audioPlayer.pause();
         }
-
-}
+        });
       </script>
 
 
